@@ -1,23 +1,23 @@
-﻿using System;
+using DoorKickersWeaponStat;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DoorKickersWeaponStat;
 
 namespace ConsoleApp1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //Sry no setting file: Change the settings here:
             var doorKickersPath = @"D:\SteamLibrary\steamapps\common\DoorKickers";
             var outputFile = @"..\..\..\..\data\info.tsv";
 
-            var result = XmlFirearmLoader.LoadAllFirearmsFromGameLocation(doorKickersPath);
+            var result = XmlFirearmLoader.LoadAllFirearmsFromGameLocation(doorKickersPath).ToList();
 
             using (var fileStream = File.Open(outputFile, FileMode.Create, FileAccess.Write, FileShare.Read))
             using (var writer = new StreamWriter(fileStream))
@@ -26,14 +26,16 @@ namespace ConsoleApp1
             }
         }
 
-        static void WriteTsv(TextWriter writer, IEnumerable<Firearm> firearms)
+        private static void WriteTsv(TextWriter writer, IEnumerable<Firearm> firearms)
         {
             WriteTsvHeader(writer);
             foreach (var f in firearms)
+            {
                 WriteFirearmTsvLine(writer, f);
+            }
         }
 
-        static void WriteTsvHeader(TextWriter writer)
+        private static void WriteTsvHeader(TextWriter writer)
         {
             var headers = new string[]
             {
@@ -70,8 +72,7 @@ namespace ConsoleApp1
             writer.WriteLine();
         }
 
-
-        static void WriteFirearmTsvLine(TextWriter writer, Firearm f)
+        private static void WriteFirearmTsvLine(TextWriter writer, Firearm f)
         {
             var formater = CultureInfo.InvariantCulture;
             var values = new string[]
