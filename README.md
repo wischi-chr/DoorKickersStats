@@ -6,3 +6,6 @@ A similar set of data was shown by _Glurk_ as a Steam Community Guide: [All weap
 
 ## Gimme data
 The _raw_ TSV (tab separated values) can be found here: [info.tsv](data/info.tsv), if you don't want to mess with importing here is a google spreadsheet you can copy: [Door Kickers Weapon Stats](https://docs.google.com/spreadsheets/d/1IUor4TyqxRYdVIGY1SOJOHm17Oa9Ra8YIc-gokiqljM/edit?usp=sharing)
+
+## Note
+Last time I checked (May 2024) the stats were still the same.
